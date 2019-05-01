@@ -32,7 +32,7 @@ public class UserController {
 
     @RequestMapping(path="/{id}", method = GET, produces = "application/json")
     public @ResponseBody
-    ResponseEntity<User> get(@PathVariable("id") Integer id) {
+    ResponseEntity<User> get(@PathVariable("id") String id) {
         Optional<User> user = userRepository.findById(id);
 
         if (user.isPresent()) {
@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @RequestMapping(path="/{id}", method = PUT, consumes = "application/json")
-    public @ResponseBody ResponseEntity<User> update(@RequestBody User user, @PathVariable("id") Integer id) {
+    public @ResponseBody ResponseEntity<User> update(@RequestBody User user, @PathVariable("id") String id) {
         Optional<User> currentUser = userRepository.findById(id);
 
         if (currentUser.isPresent()) {
@@ -55,7 +55,7 @@ public class UserController {
     }
 
     @RequestMapping(path="/{id}", method = DELETE)
-    public @ResponseBody ResponseEntity<User> delete(@PathVariable("id") Integer id) {
+    public @ResponseBody ResponseEntity<User> delete(@PathVariable("id") String id) {
         Optional<User> currentUser = userRepository.findById(id);
 
         if (currentUser.isPresent()) {
